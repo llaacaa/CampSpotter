@@ -1,0 +1,17 @@
+.checkbox-label {
+    cursor: pointer;
+    display: inline-block;
+    width: 100px;
+    /* Adjust as per your image size */
+    height: 100px;
+    /* Adjust as per your image size */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid transparent;
+    /* Border to indicate selection */
+}
+
+.form-check-input:checked+.checkbox-label {
+    border-color: #007bff;
+    /* Change border color when checked */
+}
