@@ -15,12 +15,16 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+const mongoSanitize = require('express-mongo-sanitize');
 
 const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
 const usersRoutes = require('./routes/users');
+const MongoStore = require('connect-mongo');
+const dbUrl = process.env.DB_URL;
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp')
+
+mongoose.connect(dbUrl)
     .then(() => {
         console.log("Database connected");
     })
@@ -40,7 +44,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize());
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
 const sessionConfig = {
+    store,
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
@@ -78,6 +93,10 @@ app.use('/', usersRoutes);
 
 app.get('/', (req, res) => {
     res.render('home');
+});
+
+app.get('/about', (req, res) => {
+    res.render('about');
 });
 
 app.get('/fakeUser', async (req, res) => {

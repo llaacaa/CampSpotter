@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Video Example</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .cover-container {
+            max-width: 60vw;
+        }
+
+        .nav-link {
+            padding: 0.25rem 0;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            margin-left: 1rem;
+            border-bottom: 0.25rem solid transparent;
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.5);
+            border-bottom-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-link.active {
+            color: white;
+            border-bottom-color: white;
+
+        }
+
+        .btn-secondary,
+        .btn-secondary:hover {
+            color: #333;
+            text-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .link_small {
+                font-size: 12px;
+
+            }
+
+        }
+
+        @media (max-width: 576px) {
+            .link_small {
+                font-size: 8px;
+            }
+
+
+            h2 {
+                font-size: 8px;
+            }
+
+            .p1 {
+                font-size: 12px;
+                width: 100%;
+            }
+
+            .cover-container {
+                max-width: 100%;
+            }
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <nav class="nav nav-masthead justify-content-center p1">
+                    <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                    <% if(!currentUser) { %>
+                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/register">Register</a>
+                        <% } else { %>
+                            <a class="nav-link" href="/logout">Logout</a>
+                            <% } %>
+                </nav>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-white p1">
+                    <h2>Welcome to Our Campgrounds Website</h2>
+                    <p>This website is dedicated to helping outdoor enthusiasts find the perfect campground for their
+                        next
+                        adventure. Whether you're an avid camper, a nature lover, or just looking for a peaceful
+                        getaway,
+                        we've
+                        got you covered.</p>
+                    <p>Our mission is to provide comprehensive information about various campgrounds, including
+                        amenities,
+                        activities, and nearby attractions, to make your camping experience enjoyable and hassle-free.
+                    </p>
+
+                    <h2>About the Creator</h2>
+                    <p>This website was created by Lazar Kojic, a student at Faulty of Computing (RAF). Lazar is
+                        passionate about outdoor activities and camping, and he created this website as a personal
+                        project
+                        to
+                        share his love for nature with others.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-auto text-white-50 text-center p1">
+            <p>&copy; 2024 Campgrounds Website | Created by Lazar Kojic</p>
+        </footer>
+
+
+    </div>
+    <!-- Video element for the background -->
+    <video autoplay muted loop id="video-background">
+        <source src="https://res.cloudinary.com/dr3uqsfeu/video/upload/v1707752721/bifaijwiblvlbubtmpsy.mp4"
+            type="video/mp4">
+        <!-- Add additional source elements for different video formats if needed -->
+        Your browser does not support the video tag.
+    </video>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
