@@ -55,8 +55,7 @@ const store = MongoStore.create({
 });
 
 const sessionConfig = {
-    store,
-    secret: 'secret',
+    secret: 'thisshouldbeabettersecret',
     resave: false,
     saveUninitialized: true,
     cookie: {
